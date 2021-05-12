@@ -5,10 +5,14 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+//引入封装好的axios
+import api from './http/index'
 
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
+//引入封装好的axios
+Vue.use(api)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
