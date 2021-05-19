@@ -10,8 +10,8 @@ let router=new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: '首页',
+      component: Home,
     },
     {
       path: '/login',

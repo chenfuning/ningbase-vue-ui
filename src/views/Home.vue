@@ -1,40 +1,34 @@
 <template>
-  <div class="page">
-    <h2>Home Page</h2>
-    <el-button type="primary" @click="testAxios()">测试axios</el-button>
-    <el-button type="primary" @click="testuser()">测试mock user</el-button>
-    <el-button type="primary" @click="testmenu()">测试mock menu</el-button>
+  <div class="container">
+    <!-- 导航菜单栏 -->
+    <NavBar></NavBar>
+<!--    &lt;!&ndash; 头部区域 &ndash;&gt;-->
+    <HeadBar></HeadBar>
+<!--    &lt;!&ndash; 主内容区域 &ndash;&gt;-->
+<!--    <Main></Main>-->
   </div>
 </template>
 
 <script>
-  import axios from 'axios'
   import mock from '@/mock/index.js';
+  import HeadBar from "./HeadBar/HeadBar"
+  import NavBar from "./NavBar/NavBar"
+  // import MainContent from "./MainContent/MainContent"
+
   export default{
-    name:'Home',
-    methods:{
-      testAxios() {
-        axios.get('http://localhost:8080')
-          .then(function (res){
-            alert(JSON.stringify(res.data));
-          }).catch(function (res){
-          alert(res.data);
-        })
-      },
-      testuser(){
-        axios.get('http://localhost:8080/user')
-          .then(function (res){
-            alert(JSON.stringify(res.data));
-          }).catch(function (res){
-          alert(res.data);
-        })
-      },
-      testmenu(){axios.get('http://localhost:8080/menu')
-        .then(function (res){
-          alert(JSON.stringify(res.data));
-        }).catch(function (res){
-          alert(res.data);
-        })}
+    components:{
+      HeadBar,
+      NavBar,
+      // MainContent
     }
   }
 </script>
+<style scoped lang="scss">
+.container {
+  position:absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  background: #4b5f6e;
+}
+</style>
