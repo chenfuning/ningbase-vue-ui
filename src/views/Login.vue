@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import mock from '@/mock/mock.js';
 import Cookies from "js-cookie";
 import router from '@/router'
+import mock from '@/mock/mock.js';
 export default {
   name:'Login',
   methods:{

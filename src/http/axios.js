@@ -9,6 +9,7 @@ import router from '@/router'
 
 export default function $axios(options) {
   return new Promise((resolve, reject) => {
+    //axios的实例
     const instance = axios.create({
       baseURL: config.baseURL,
       headers: {},

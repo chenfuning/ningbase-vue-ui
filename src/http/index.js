@@ -8,7 +8,7 @@ const install = Vue => {
   install.installed = true;
 
   Object.defineProperties(Vue.prototype, {
-    // 注意，此处挂载在 Vue 原型的 $api 对象上
+    // 注意，此处挂载在 Vue 原型的 $api.js 对象上
     $api: {
       get() {
         return apis
