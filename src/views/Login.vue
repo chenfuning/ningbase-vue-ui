@@ -8,7 +8,7 @@
 <script>
 import Cookies from "js-cookie";
 import router from '@/router'
-import mock from '@/mock/mock.js';
+import mock from '@/mock/index.js';
 export default {
   name:'Login',
   methods:{
