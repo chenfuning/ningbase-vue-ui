@@ -7,6 +7,8 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 //引入封装好的axios
 import api from './http/index'
+//font-awesome 图标库
+import 'font-awesome/css/font-awesome.min.css'
 
 Vue.config.productionTip = false
 
