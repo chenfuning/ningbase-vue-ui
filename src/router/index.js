@@ -5,7 +5,8 @@ import Home from '@/views/Home'
 import NotFound from '@/views/404'
 Vue.use(Router)
 
-export default new Router({
+
+let router=new Router({
   routes: [
     {
       path: '/',
@@ -25,3 +26,21 @@ export default new Router({
 
   ]
 })
+//添加导航守卫,
+router.beforeEach((to,from,next)=>{
+  let user=sessionStorage.getItem('user');
+  if(to.path=='/login'){
+    if(user){
+      next({path:'/'})
+    }else{
+      next();
+    }
+  }else{
+    if(!user){
+      next({path:'/login'})
+    }else{
+      next();
+    }
+  }
+})
+export default router;

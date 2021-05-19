@@ -1,4 +1,4 @@
-import axios from './axios'
+import axios from './axiosning'
 
 /*
  * 测试接口模块(可删),实际使用api.js
@@ -7,10 +7,11 @@ import axios from './axios'
  */
 
 // 单独导出
-export const login = () => {
+export const login = data => {
   return axios({
     url: '/login',
-    method: 'get'
+    method: 'post',
+    data
   })
 }
 
