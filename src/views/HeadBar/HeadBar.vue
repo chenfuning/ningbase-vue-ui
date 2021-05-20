@@ -1,8 +1,8 @@
 <template>
   <div class="container" :class="$store.state.app.collapse?'menu-bar-collapse-width':'menu-bar-width'">
     <!-- 导航菜单隐藏显示切换 -->
-    <span class="collapse-switcher" @click.prevent="collapse">
-      <i class="el-icon-menu"></i>
+    <span class="collapse-switcher" >
+      <Hamburger :toggle-click="collapse" :is-active="$store.state.app.collapse"></Hamburger>
     </span>
     <!-- 导航菜单 -->
     <span class="nav-bar">
@@ -30,7 +30,9 @@
 <script>
 import mock from "@/mock/index.js";
 import store from "../../store";
+import Hamburger from "../../components/Hamburger";
 export default {
+  components: {Hamburger},
   data() {
     return {
       username:"Ning",
