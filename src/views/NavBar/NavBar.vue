@@ -1,11 +1,11 @@
 <template>
   <div class="menu-bar-container">
     <!-- logo -->
-    <div class="logo" :class="isCollapse?'menu-bar-collapse-width':'menu-bar-width'">
+    <div class="logo" :class="'menu-bar-width'">
       <img :src="this.logo" /> <div>{{isCollapse?'':sysName}}</div>
     </div>
     <!-- 导航菜单 -->
-    <el-menu default-active="1-1" :class="isCollapse?'menu-bar-collapse-width':'menu-bar-width'">
+    <el-menu default-active="1-1"  :class="'menu-bar-collapse-width'"  >
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
@@ -30,7 +30,6 @@
 export default {
   data() {
     return {
-      isCollapse:false,
       sysName: "NingBase",
       logo: "",
     };

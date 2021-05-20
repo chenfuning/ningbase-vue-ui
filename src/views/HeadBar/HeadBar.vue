@@ -1,16 +1,16 @@
 <template>
   <div class="container">
     <!-- 导航菜单隐藏显示切换 -->
-    <span class="collapse-switcher" @click.prevent="collapse">
+    <span class="collapse-switcher" >
       <i class="el-icon-menu"></i>
     </span>
     <!-- 导航菜单 -->
     <span class="nav-bar">
       <el-menu class="el-menu-demo" text-color="#fff"
-               active-text-color="#ffd04b" mode="horizontal" @select="selectNavBar()">
+               active-text-color="#ffd04b" mode="horizontal">
         <el-menu-item index="1" @click="$router.push('/')">首页</el-menu-item>
-        <el-menu-item index="2">消息中心</el-menu-item>
-        <el-menu-item index="3">订单管理</el-menu-item>
+        <el-menu-item index="2">文档</el-menu-item>
+        <el-menu-item index="3">联系我</el-menu-item>
       </el-menu>
     </span>
     <span class="tool-bar">
