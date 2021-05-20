@@ -1,11 +1,11 @@
 <template>
   <div class="menu-bar-container">
     <!-- logo -->
-    <div class="logo" :class="$store.state.collapse?'menu-bar-collapse-width':'menu-bar-width'">
-      <img :src="this.logo" /> <div>{{$store.state.collapse?'':sysName}}</div>
+    <div class="logo" :class="$store.state.app.collapse?'menu-bar-collapse-width':'menu-bar-width'">
+      <img :src="this.logo" /> <div>{{$store.state.app.collapse?'':sysName}}</div>
     </div>
     <!-- 导航菜单 -->
-    <el-menu default-active="1-1" :class="$store.state.collapse?'menu-bar-collapse-width':'menu-bar-width'"  :collapse="$store.state.collapse">
+    <el-menu default-active="1-1" :class="$store.state.app.collapse?'menu-bar-collapse-width':'menu-bar-width'"  :collapse="$store.state.app.collapse">
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
