@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container" :class="$store.state.collapse?'menu-bar-collapse-width':'menu-bar-width'">
     <!-- 导航菜单隐藏显示切换 -->
-    <span class="collapse-switcher" >
+    <span class="collapse-switcher" @click.prevent="collapse">
       <i class="el-icon-menu"></i>
     </span>
     <!-- 导航菜单 -->
@@ -29,6 +29,7 @@
 
 <script>
 import mock from "@/mock/index.js";
+import store from "../../store";
 export default {
   data() {
     return {
@@ -37,6 +38,10 @@ export default {
     };
   },
   methods: {
+    //折叠导航栏
+    collapse: function() {
+      this.$store.commit('collapse');
+    },
     //退出登录
     logout: function () {
       var _this = this;
@@ -62,6 +67,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 .container {
   position: absolute;
   left: 200px;
@@ -111,6 +117,12 @@ export default {
         float: right;
       }
     }
+  }
+  .menu-bar-width{
+    left: 200px;
+  }
+  .menu-bar-collapse-width{
+    left: 65px;
   }
 }
 

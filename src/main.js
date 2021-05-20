@@ -9,6 +9,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import api from './http/index'
 //font-awesome 图标库
 import 'font-awesome/css/font-awesome.min.css'
+//状态管理仓库
+import store from "./store";
 
 Vue.config.productionTip = false
 
@@ -19,6 +21,7 @@ Vue.use(api)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
