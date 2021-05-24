@@ -39,11 +39,15 @@ export default {
   },
   methods: {
     login() {
-      let userInfo = {account:this.loginForm.account, password:this.loginForm.password}
+      let userInfo = {account:this.loginForm.account, password:this.loginForm.password,captcha:null}
       this.$api.login(JSON.stringify(userInfo)).then((res) => {
+        if(res.status==200){
         Cookies.set('token', res.data.token) // 放置token到Cookie
         sessionStorage.setItem('user', userInfo.account) // 保存用户到本地会话
         this.$router.push('/')  // 登录成功，跳转到主页
+        }else{
+          alert(res.msg)
+        }
       }).catch(function(res) {
         alert(res);
       });
