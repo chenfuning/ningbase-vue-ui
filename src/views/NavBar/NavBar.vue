@@ -6,28 +6,33 @@
     </div>
     <!-- 导航菜单 -->
     <el-menu default-active="1-1" :class="$store.state.app.collapse?'menu-bar-collapse-width':'menu-bar-width'"  :collapse="$store.state.app.collapse">
-      <el-submenu index="1">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span slot="title">系统管理</span>
-        </template>
-        <el-menu-item index="1-1" @click="$router.push('user')">用户管理</el-menu-item>
-        <el-menu-item index="1-2" @click="$router.push('menu')">菜单管理</el-menu-item>
+<!--      <el-submenu index="1">-->
+<!--        <template slot="title">-->
+<!--          <i class="el-icon-location"></i>-->
+<!--          <span slot="title">系统管理</span>-->
+<!--        </template>-->
+<!--        <el-menu-item index="1-1" @click="$router.push('user')">用户管理</el-menu-item>-->
+<!--        <el-menu-item index="1-2" @click="$router.push('menu')">菜单管理</el-menu-item>-->
 
-      </el-submenu>
-      <el-submenu index="2">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span slot="title">系统介绍</span>
-        </template>
-      </el-submenu>
+<!--      </el-submenu>-->
+<!--      <el-submenu index="2">-->
+<!--        <template slot="title">-->
+<!--          <i class="el-icon-location"></i>-->
+<!--          <span slot="title">系统介绍</span>-->
+<!--        </template>-->
+<!--      </el-submenu>-->
+    <NavMenuTree v-for="item in $store.state.menu.NavMenuTree" :key="item.menuId" :menu="item"></NavMenuTree>
     </el-menu>
   </div>
 </template>
 
 
 <script>
+import  NavMenuTree from "../../components/NavMenuTree"
 export default {
+  components: {
+    NavMenuTree
+  },
   data() {
     return {
       sysName: "NingBase",
@@ -35,6 +40,9 @@ export default {
     };
   },
   methods: {
+    findNavTree(){
+
+    },
 
   },
   mounted() {

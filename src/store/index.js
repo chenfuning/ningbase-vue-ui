@@ -5,6 +5,7 @@ Vue.use(vuex);
 
 //导入AppStore的模块
 import  AppStore from './modules/AppStore.js';
+import  menu     from './modules/menu.js'
 
 const store = new vuex.Store({
   // state:{
@@ -16,7 +17,8 @@ const store = new vuex.Store({
   //   }
   // }
   modules:{
-    app:AppStore
+    app:AppStore,
+    menu:menu
     //others
   }
 })

@@ -17,6 +17,8 @@
 
 <script>
 import Cookies from "js-cookie";
+import mock from "@/mock/index.js";
+import {login} from "../http/moudules/login";
 export default {
   name: 'Login',
   data() {
@@ -40,7 +42,7 @@ export default {
   methods: {
     login() {
       let userInfo = {account:this.loginForm.account, password:this.loginForm.password,captcha:null}
-      this.$api.login(JSON.stringify(userInfo)).then((res) => {
+      this.$api.login.login(JSON.stringify(userInfo)).then((res) => {
         if(res.status==200){
         Cookies.set('token', res.data.token) // 放置token到Cookie
         sessionStorage.setItem('user', userInfo.account) // 保存用户到本地会话
