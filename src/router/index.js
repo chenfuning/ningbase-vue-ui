@@ -64,10 +64,16 @@ router.beforeEach((to,from,next)=>{
  * 获取动态菜单，并存入store
  */
 function getandsetNavMenuTree(){
+  //如果菜单和路由已经加载完成就return
+  if(store.state.menu.menuRouteLoaded){
+    return
+  }
   api.menu.getMenu().then((res)=>{
     //这里的type：setNavMenuTree是 mutations的方法
     store.commit('setNavMenuTree',res.data);
     setRoutes(res.data);
+    //保存菜单加载状态
+    store.commit('setmenuRouteLoaded',true);
   }).catch(function (res){
   })
 }
