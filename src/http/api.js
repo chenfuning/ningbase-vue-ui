@@ -3,7 +3,7 @@
  */
 import * as login from './moudules/login'
 import * as menu from './moudules/menu'
-// import * as user from './moudules/user'
+import * as user from './moudules/user'
 // import * as dept from './moudules/dept'
 // import * as role from './moudules/role'
 // import * as dict from './moudules/dict'
@@ -13,8 +13,8 @@ import * as menu from './moudules/menu'
 // 默认全部导出
 export default {
   login,
-  menu
-  // user,
+  menu,
+  user,
   // dept,
   // role,
   // dict,
