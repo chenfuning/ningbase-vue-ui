@@ -59,7 +59,19 @@ export default {
     }
   },
   methods: {
-
+    // 分页查询
+    findPage: function () {
+      this.$emit('findPage', {pageRequest:this.pageRequest});//其中function为父组件定义函数，param为需要传递参数
+    },
+    //换页刷新
+    refreshPageRequest:function(pageNum){
+        this.pageRequest=pageNum;
+        this.findPage();
+    }
   },
+  mounted() {
+    //加载之前，获取分页数据
+    this.refreshPageRequest(1);
+  }
 }
 </script>

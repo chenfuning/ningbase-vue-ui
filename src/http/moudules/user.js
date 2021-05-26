@@ -24,6 +24,6 @@ export const findPage = (params) => {
   return axios({
     url: '/user/findPage',
     method: 'post',
-    data:params
+    params:params
   })
 }

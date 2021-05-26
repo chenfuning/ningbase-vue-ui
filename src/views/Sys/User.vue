@@ -19,7 +19,7 @@
       </el-form>
     </div>
     <!--表格-->
-    <nb-table :data="pageResult" :columns="columns" ></nb-table>
+    <nb-table :data="pageResult" :columns="columns"  @findPage="findPage"></nb-table>
   </div>
 </template>
 
@@ -41,86 +41,22 @@ export default {
         {prop:"email", label:"邮箱", minWidth:120, sortable:"true"},
         {prop:"mobile", label:"手机", minWidth:120, sortable:"true"}
       ],
-      pageResult: {content:[{
-          "userId": 1,
-          "username": "admin",
-          "password": "9ec9750e709431dad22365cabc5c625482e574c74adaebba7dd02f1129e4ce1d",
-          "salt": "YzcmCZNvbXocrsz9dm8e",
-          "email": "admin@qq.com",
-          "mobile": "13612345678",
-          "status": 1,
-          "deptId": null,
-          "deptName": null,
-          "createBy": null,
-          "createTime": "2018-08-14T03:11:11.000+0000",
-          "lastUpdateBy": null,
-          "lastUpdateTime": null,
-          "delFlag": 0
-        },
-          {
-            "userId": 2,
-            "username": "Louis",
-            "password": "9ec9750e709431dad22365cabc5c625482e574c74adaebba7dd02f1129e4ce1d",
-            "salt": "YzcmCZNvbXocrsz9dm8e",
-            "email": "louis@qq.com",
-            "mobile": "18200932238",
-            "status": 1,
-            "deptId": null,
-            "deptName": null,
-            "createBy": null,
-            "createTime": "2018-08-14T03:11:11.000+0000",
-            "lastUpdateBy": null,
-            "lastUpdateTime": null,
-            "delFlag": 0
-          },
-          {
-            "userId": 3,
-            "username": "Kobe",
-            "password": "9ec9750e709431dad22365cabc5c625482e574c74adaebba7dd02f1129e4ce1d",
-            "salt": "YzcmCZNvbXocrsz9dm8e",
-            "email": "kobe@qq.com",
-            "mobile": "18200932238",
-            "status": 1,
-            "deptId": null,
-            "deptName": null,
-            "createBy": null,
-            "createTime": "2018-08-14T03:11:11.000+0000",
-            "lastUpdateBy": null,
-            "lastUpdateTime": null,
-            "delFlag": 0
-          },
-          {
-            "userId": 4,
-            "username": "Iverson",
-            "password": "9ec9750e709431dad22365cabc5c625482e574c74adaebba7dd02f1129e4ce1d",
-            "salt": "YzcmCZNvbXocrsz9dm8e",
-            "email": "iverson@qq.com",
-            "mobile": "18200932238",
-            "status": 1,
-            "deptId": null,
-            "deptName": null,
-            "createBy": null,
-            "createTime": "2018-08-14T03:11:11.000+0000",
-            "lastUpdateBy": null,
-            "lastUpdateTime": null,
-            "delFlag": 0
-          },
-          {
-            "userId": 110,
-            "username": "test",
-            "password": "123456",
-            "salt": "1312321321",
-            "email": "test@qq.com",
-            "mobile": "test2@qq.com",
-            "status": 0,
-            "deptId": 110,
-            "deptName": null,
-            "createBy": 0,
-            "createTime": "2018-09-01T05:40:23.000+0000",
-            "lastUpdateBy": 0,
-            "lastUpdateTime": "2018-09-01T05:40:23.000+0000",
-            "delFlag": 0
-          }]}//返回结果数据
+      pageRequest:{pageNum: 1, pageSize: 8 },
+      pageResult: {}//返回结果数据
+    }
+  },
+  methods:{
+    // 获取分页数据
+    findPage: function (data) {
+      //data 是否指定了分页查询的参数
+      if(data !== null) {
+        this.pageRequest = data.pageRequest
+      }
+      // this.pageRequest.columnFilters = {name: {name:'name', value:this.filters.name}}
+      //分页请求
+      this.$api.user.findPage(this.pageRequest).then((res) => {
+        this.pageResult = res.data
+      })
     }
   }
 
