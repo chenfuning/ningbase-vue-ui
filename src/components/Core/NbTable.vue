@@ -10,7 +10,7 @@
       </el-table-column>
       <el-table-column label="操作" width="150" fixed="right">
         <template slot-scope="scope">
-          <nb-button label="编辑"  :size="size" @click="" />
+          <nb-button label="编辑"  :size="size" @click="handleEdit(scope.$index, scope.row)" />
           <nb-button label="删除"  :size="size" type="danger" @click="" />
         </template>
       </el-table-column>
@@ -19,7 +19,10 @@
     <div class="toolbar" style="padding:10px;">
       <nb-button label="批量删除"  :size="size" type="danger"
                   style="float:left;"/>
-      <el-pagination layout="total, prev, pager, next, jumper"  style="float:right;">
+      <el-pagination layout="total, prev, pager, next, jumper" @current-change="refreshPageRequest"
+                     :current-page="pageRequest.pageNum"
+                     :total="data.totalSize"
+                     style="float:right;">
       </el-pagination>
     </div>
   </div>
@@ -65,9 +68,13 @@ export default {
     },
     //换页刷新
     refreshPageRequest:function(pageNum){
-        this.pageRequest=pageNum;
+        this.pageRequest.pageNum=pageNum;
         this.findPage();
-    }
+    },
+    // 编辑
+    handleEdit: function (index, row) {
+      this.$emit('handleEdit', {index:index, row:row});
+    },
   },
   mounted() {
     //加载之前，获取分页数据

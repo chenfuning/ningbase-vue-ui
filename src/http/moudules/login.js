@@ -6,9 +6,8 @@ import axios from '../axiosning'
 
 // 登录
 export const login = data => {
-  console.log(login)
   return axios({
-    baseURL: 'http://localhost:8080/',
+    baseURL: 'http://localhost:8844/',
     url: '/login',
     headers: {
       'Content-Type': 'application/json;charset=UTF-8',

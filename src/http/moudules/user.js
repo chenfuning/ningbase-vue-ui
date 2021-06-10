@@ -20,10 +20,13 @@ export const del = (params) => {
   })
 }
 // 分页查询
-export const findPage = (params) => {
+export const findPage = (pageRequest) => {
   return axios({
     url: '/user/findPage',
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
     method: 'post',
-    params:params
+    data:pageRequest
   })
 }
