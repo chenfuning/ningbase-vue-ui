@@ -19,7 +19,7 @@
       </el-form>
     </div>
     <!--表格-->
-    <nb-table :data="pageResult" :columns="columns"  @findPage="findPage" @handleEdit="handleEdit"></nb-table>
+    <nb-table :data="pageResult" :columns="columns"  @findPage="findPage" @handleEdit="handleEdit" @handleDelete="handleDelete"></nb-table>
 
     <!--新增编辑界面-->
     <el-dialog :title="operation?'新增':'编辑'" width="40%" :visible.sync="editDialogVisible" :close-on-click-modal="false">
@@ -50,6 +50,7 @@
 
 <script>
 import nbTable from "../../components/Core/NbTable";
+import {del} from "../../http/moudules/user";
 export default {
   name: 'User',
   components:{
@@ -134,6 +135,17 @@ export default {
             })
           })
         }
+      })
+    },
+    //删除
+    handleDelete: function (data) {
+      console.log(data.id)
+      this.$confirm('确认删除选中记录吗？', '提示', {type: 'warning'}).then(() => {
+        this.$api.user.del(data.id).then((res) => {
+          if(res.status==200){
+          this.$message({message: '删除成功', type: 'success'})
+          this.findPage(null)}
+        })
       })
     },
   }

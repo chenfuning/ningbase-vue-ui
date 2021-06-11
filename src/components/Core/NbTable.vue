@@ -11,7 +11,7 @@
       <el-table-column label="操作" width="150" fixed="right">
         <template slot-scope="scope">
           <nb-button label="编辑"  :size="size" @click="handleEdit(scope.$index, scope.row)" />
-          <nb-button label="删除"  :size="size" type="danger" @click="" />
+          <nb-button label="删除"  :size="size" type="danger" @click="handleDelete(scope.$index, scope.row)" />
         </template>
       </el-table-column>
     </el-table>
@@ -75,6 +75,13 @@ export default {
     handleEdit: function (index, row) {
       this.$emit('handleEdit', {index:index, row:row});
     },
+    handleDelete: function(index, row){
+      this.delete(row.id);
+    },
+    // 删除操作
+    delete: function (id) {
+      this.$emit('handleDelete', {id:id})
+    }
   },
   mounted() {
     //加载之前，获取分页数据

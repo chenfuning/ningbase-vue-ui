@@ -1,5 +1,8 @@
 import axios from '../axiosning'
 
+
+
+
 /*
  * 用户管理模块
  */
@@ -12,11 +15,10 @@ export const save = (params) => {
     data:params
   })
 }// 删除
-export const del = (params) => {
+export const del = (id) => {
   return axios({
-    url: '/user/delete',
-    method: 'post',
-    data:params
+    url: '/user/delete/'+id,
+    method: 'get',
   })
 }
 // 分页查询
@@ -28,5 +30,10 @@ export const findPage = (pageRequest) => {
     },
     method: 'post',
     data:pageRequest
+  })
+}
+//批量删除
+export function batchDelete(params) {
+  return axios({
   })
 }
